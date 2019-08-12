@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   123456789101112131415161718192021解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake inst">
+<meta name="description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   12345678910111213141516171819202122解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake in">
 <meta name="keywords" content="tool,ctf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装RsaCtfTool问题">
 <meta property="og:url" content="http://yoursite.com/2019/08/12/安装rsactftool问题/index.html">
 <meta property="og:site_name" content="SunDaSheng&#39;s blog">
-<meta property="og:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   123456789101112131415161718192021解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake inst">
+<meta property="og:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   12345678910111213141516171819202122解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake in">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T08:44:53.233Z">
+<meta property="og:updated_time" content="2019-08-12T10:03:41.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装RsaCtfTool问题">
-<meta name="twitter:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   123456789101112131415161718192021解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake inst">
+<meta name="twitter:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   12345678910111213141516171819202122解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake in">
 
 
 
@@ -336,6 +336,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  114
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
 
           
 
@@ -355,12 +386,13 @@
         <h2 id="安装RsaCtfTool遇到的问题"><a href="#安装RsaCtfTool遇到的问题" class="headerlink" title="安装RsaCtfTool遇到的问题"></a>安装RsaCtfTool遇到的问题</h2><h3 id="1-没有安装mpfr和mpc"><a href="#1-没有安装mpfr和mpc" class="headerlink" title="1.没有安装mpfr和mpc"></a>1.没有安装mpfr和mpc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">错误</span><br><span class="line">fatal error: mpfr.h</span><br><span class="line">fatal error: mpc.h</span><br></pre></td></tr></table></figure>
 
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">解决</span><br><span class="line">ftp://ftp.gnu.org/gnu/mpfr</span><br><span class="line">tar mpfr-v.tar.gz   </span><br><span class="line">cd mpfr-v</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">ftp://gcc.gnu.org/pub/gcc/infrastructure</span><br><span class="line">tar -xzvf  mpc-v.tar.gz</span><br><span class="line">cd mpc-1.0.3</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line">``` </span><br><span class="line">安装配置mpfr和mpc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.网络</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">解决</span><br><span class="line">ftp://ftp.gnu.org/gnu/mpfr</span><br><span class="line">tar mpfr-v.tar.gz   </span><br><span class="line">cd mpfr-v</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">ftp://gcc.gnu.org/pub/gcc/infrastructure</span><br><span class="line">tar -xzvf  mpc-v.tar.gz</span><br><span class="line">cd mpc-1.0.3</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">安装配置mpfr和mpc</span><br><span class="line">---------------------------------------------------------</span><br><span class="line"></span><br><span class="line">### 2.网络</span><br></pre></td></tr></table></figure>
 
 <p>错误<br>Could not find a version that satisfies the requirement skimage (from versions: )<br>Collecting distribute<br>Exception:<br>Traceback (most recent call last):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----------------------------------------------------</span><br></pre></td></tr></table></figure>
 
-<p>解决<br>pip install -r requirements.txt -i <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a> –trusted-host pypi.douban.com<br>```<br>换豆瓣的镜像源</p>
+<p>解决<br>pip install -r requirements.txt -i <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a> –trusted-host pypi.douban.com<br>```</p>
+<p>换豆瓣的镜像源</p>
 
       
     </div>
@@ -577,6 +609,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">SunDaSheng</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">1.3k</span>
   
 </div>
 
