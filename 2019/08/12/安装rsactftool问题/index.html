@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc12345678错误fatal error: mpfr.hfatal error: mpc.h```  &amp;lt; !--more--&amp;gt;---------------------------------------------  解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gzcd mpfr">
+<meta name="description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   12345678910111213141516解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake installftp://g">
 <meta name="keywords" content="tool,ctf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装RsaCtfTool问题">
 <meta property="og:url" content="http://yoursite.com/2019/08/12/安装rsactftool问题/index.html">
 <meta property="og:site_name" content="SunDaSheng&#39;s blog">
-<meta property="og:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc12345678错误fatal error: mpfr.hfatal error: mpc.h```  &amp;lt; !--more--&amp;gt;---------------------------------------------  解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gzcd mpfr">
+<meta property="og:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   12345678910111213141516解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake installftp://g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-12T10:19:45.122Z">
+<meta property="og:updated_time" content="2019-08-13T09:17:05.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装RsaCtfTool问题">
-<meta name="twitter:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc12345678错误fatal error: mpfr.hfatal error: mpc.h```  &amp;lt; !--more--&amp;gt;---------------------------------------------  解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gzcd mpfr">
+<meta name="twitter:description" content="安装RsaCtfTool遇到的问题1.没有安装mpfr和mpc123错误fatal error: mpfr.hfatal error: mpc.h   12345678910111213141516解决ftp://ftp.gnu.org/gnu/mpfrtar mpfr-v.tar.gz   cd mpfr-v./configuremakemake checkmake installftp://g">
 
 
 
@@ -298,7 +298,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-13T17:17:05+08:00">
+                2019-08-13
+              </time>
             
           </span>
 
@@ -346,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  117
+                  113
                 </span>
               
 
@@ -383,16 +395,17 @@
       
 
       
-        <h2 id="安装RsaCtfTool遇到的问题"><a href="#安装RsaCtfTool遇到的问题" class="headerlink" title="安装RsaCtfTool遇到的问题"></a>安装RsaCtfTool遇到的问题</h2><h3 id="1-没有安装mpfr和mpc"><a href="#1-没有安装mpfr和mpc" class="headerlink" title="1.没有安装mpfr和mpc"></a>1.没有安装mpfr和mpc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">错误</span><br><span class="line">fatal error: mpfr.h</span><br><span class="line">fatal error: mpc.h</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">&lt; !--more--&gt;</span><br><span class="line"></span><br><span class="line">---------------------------------------------</span><br></pre></td></tr></table></figure>
+        <h2 id="安装RsaCtfTool遇到的问题"><a href="#安装RsaCtfTool遇到的问题" class="headerlink" title="安装RsaCtfTool遇到的问题"></a>安装RsaCtfTool遇到的问题</h2><h3 id="1-没有安装mpfr和mpc"><a href="#1-没有安装mpfr和mpc" class="headerlink" title="1.没有安装mpfr和mpc"></a>1.没有安装mpfr和mpc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">错误</span><br><span class="line">fatal error: mpfr.h</span><br><span class="line">fatal error: mpc.h</span><br></pre></td></tr></table></figure>
 
-<p>解决<br><a href="ftp://ftp.gnu.org/gnu/mpfr" target="_blank" rel="noopener">ftp://ftp.gnu.org/gnu/mpfr</a><br>tar mpfr-v.tar.gz<br>cd mpfr-v<br>./configure<br>make<br>make check<br>make install</p>
-<p><a href="ftp://gcc.gnu.org/pub/gcc/infrastructure" target="_blank" rel="noopener">ftp://gcc.gnu.org/pub/gcc/infrastructure</a><br>tar -xzvf  mpc-v.tar.gz<br>cd mpc-1.0.3<br>./configure<br>make<br>make check<br>make install</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">安装配置mpfr和mpc  </span><br><span class="line"></span><br><span class="line">### 2.网络</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">解决</span><br><span class="line">ftp://ftp.gnu.org/gnu/mpfr</span><br><span class="line">tar mpfr-v.tar.gz   </span><br><span class="line">cd mpfr-v</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">ftp://gcc.gnu.org/pub/gcc/infrastructure</span><br><span class="line">tar -xzvf  mpc-v.tar.gz</span><br><span class="line">cd mpc-1.0.3</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<p>错误<br>Could not find a version that satisfies the requirement skimage (from versions: )<br>Collecting distribute<br>Exception:<br>Traceback (most recent call last):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">--------------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>安装配置mpfr和mpc  </p>
+<h3 id="2-网络"><a href="#2-网络" class="headerlink" title="2.网络"></a>2.网络</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">错误</span><br><span class="line">Could not find a version that satisfies the requirement skimage (from versions: )      </span><br><span class="line">Collecting distribute</span><br><span class="line">Exception:</span><br><span class="line">Traceback (most recent call last):</span><br></pre></td></tr></table></figure>
 
-<p>解决<br>pip install -r requirements.txt -i <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a> –trusted-host pypi.douban.com<br>```  </p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解决</span><br><span class="line">pip install -r requirements.txt -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com</span><br></pre></td></tr></table></figure>
+
 <p>换豆瓣的镜像源</p>
 
       
@@ -584,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装RsaCtfTool遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">安装RsaCtfTool遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-没有安装mpfr和mpc"><span class="nav-number">1.1.</span> <span class="nav-text">1.没有安装mpfr和mpc</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装RsaCtfTool遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">安装RsaCtfTool遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-没有安装mpfr和mpc"><span class="nav-number">1.1.</span> <span class="nav-text">1.没有安装mpfr和mpc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-网络"><span class="nav-number">1.2.</span> <span class="nav-text">2.网络</span></a></li></ol></li></ol></div>
             
 
           </div>
