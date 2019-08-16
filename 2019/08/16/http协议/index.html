@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTTP协议1. 简介1.1 超文本传输协议(Hypertext transfer protocol)规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。HTTP协议位于TCP/IP模型中应用层的协议。通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPSHTTP是一个应用层">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http协议">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/http协议/index.html">
+<meta property="og:site_name" content="SunDaSheng&#39;s blog">
+<meta property="og:description" content="HTTP协议1. 简介1.1 超文本传输协议(Hypertext transfer protocol)规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。HTTP协议位于TCP/IP模型中应用层的协议。通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPSHTTP是一个应用层">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i2.tiimg.com/696747/6198f94a97b1b763.png">
+<meta property="og:updated_time" content="2019-08-16T07:51:50.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http协议">
+<meta name="twitter:description" content="HTTP协议1. 简介1.1 超文本传输协议(Hypertext transfer protocol)规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。HTTP协议位于TCP/IP模型中应用层的协议。通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPSHTTP是一个应用层">
+<meta name="twitter:image" content="http://i2.tiimg.com/696747/6198f94a97b1b763.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/16/http协议/">
+
+
+
+
+
+  <title>http协议 | SunDaSheng's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SunDaSheng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">hello,stupid wrold</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archives"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/http协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SunDaSheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://i2.tiimg.com/696747/c33fc3fed989c813.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SunDaSheng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">http协议</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-16T15:45:55+08:00">
+                2019-08-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-16T15:51:50+08:00">
+                2019-08-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><h3 id="1-1-超文本传输协议"><a href="#1-1-超文本传输协议" class="headerlink" title="1.1 超文本传输协议"></a>1.1 超文本传输协议</h3><p>(Hypertext transfer protocol)<br><img src="http://i2.tiimg.com/696747/6198f94a97b1b763.png" alt="Markdown"><br>规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。<br>HTTP协议位于TCP/IP模型中应用层的协议。通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPS<br>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个==无状态==的协议。<br>HTTP默认的端口号为==80==，HTTPS的端口号为==443==</p>
+<a id="more"></a>
+
+<h3 id="1-2-特点"><a href="#1-2-特点" class="headerlink" title="1.2 特点"></a>1.2 特点</h3><ul>
+<li>简单快速：客户向服务器请求服务时，只需传送==请求方法和路径==。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。  </li>
+<li>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。  </li>
+<li>HTTP 0.9和1.0使用非持续连接：限制==每次连接只处理一个请求==，服务器处理完客户的请求，并收到客户的应答后，即断开连接。HTTP1.1使用持续连接：不必为每个web对象创建一个新的连接，一个连接可以传送多个对象，采用这种方式可以节省传输时间。</li>
+<li>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
+<li>支持B/S及C/S模式。  </li>
+</ul>
+<h2 id="2-请求"><a href="#2-请求" class="headerlink" title="2. 请求"></a>2. 请求</h2><h3 id="2-1-组成"><a href="#2-1-组成" class="headerlink" title="2.1 组成"></a>2.1 组成</h3><ul>
+<li>请求行<br>请求行是请求消息的第一行，由三部分组成：<br><code>请求方法</code>（GET/POST/DELETE/PUT/HEAD/…）、<code>请求资源的URI路径</code>、<code>HTTP的版本号</code></li>
+<li>请求头<br>请求头中的信息有和缓存相关的头（Cache-Control，If-Modified-Since）、客户端身份信息（User-Agent）<br>等等</li>
+<li>请求体<br>请求体是客户端发给服务端的请求数据，这部分数据并不是每个请求必须的。<br>根据HTTP标准，HTTP请求可以使用多种请求方法   </li>
+</ul>
+<h3 id="2-2-请求方法"><a href="#2-2-请求方法" class="headerlink" title="2.2 请求方法"></a>2.2 请求方法</h3><p>HTTP1.0定义了三种请求方法：GET,POST和HEAD方法。<br>HTTP1.1新增了五种请求方法：OPTIONS,PUT,DELETE,TRACE,CONNECT方法。</p>
+<h4 id="2-21-GET"><a href="#2-21-GET" class="headerlink" title="2.21 GET"></a>2.21 GET</h4><ul>
+<li>格式<br>&lt;访问路径&gt;[?<arg1>=<value1>[&amp;<arg2>=<value2>….]]<br>例子：<a href="http://site1.com/get.php?arg1=value1" target="_blank" rel="noopener">http://site1.com/get.php?arg1=value1</a>  </value2></arg2></value1></arg1></li>
+<li>GET请求，是可以把数据放在URL中来传递，也==可以不包含任何数据==，HTTP请求只有请求头，没有请求数据。  </li>
+<li>GET请求可以只有请求的路径：<br><a href="http://www.gooann.com" target="_blank" rel="noopener">http://www.gooann.com</a><h4 id="2-22-POST"><a href="#2-22-POST" class="headerlink" title="2.22 POST"></a>2.22 POST</h4></li>
+<li>格式<ul>
+<li>表单格式：application/x-www-form-urlencoded</li>
+<li>混合格式：multipart/form-data</li>
+<li>JSON格式：application/json</li>
+<li>XML格式：text/xml</li>
+<li>文本：text/plain</li>
+</ul>
+</li>
+<li>POST方式也可以像GET方式在URL带参数，但一般==不会==这么去使用。<br>表单方式与GET方式类似，只是把数据放在头文件下面的请求正文区域。</li>
+<li>POST请求可能会导致新的资源的建立和/或已有资源的修改</li>
+</ul>
+<h4 id="2-23-HEAD"><a href="#2-23-HEAD" class="headerlink" title="2.23 HEAD"></a>2.23 HEAD</h4><ul>
+<li>HEAD请求就是返回只有头部数据，数据部分不返回内容<br>返回的内容基本上与GET，POST的返回头一致<h4 id="2-24其他"><a href="#2-24其他" class="headerlink" title="2.24其他"></a>2.24其他</h4></li>
+<li>PUT<br>从客户端向服务器传送的数据取代指定的文档的内容</li>
+<li>DELETE<br>求服务器删除指定的页面</li>
+<li>CONNECT<br>HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</li>
+<li>OPTIONS<br>客户端询问服务器可以提交哪些请求方法</li>
+</ul>
+<h2 id="3-状态码"><a href="#3-状态码" class="headerlink" title="3. 状态码"></a>3. 状态码</h2><ul>
+<li>作用<br>Web服务器用来告诉客户端，发生了什么事。</li>
+<li>状态代码由三位数字组成，第一个数字定义了响应的类别，共分五种类别:   <ul>
+<li><strong>1xx：指示信息</strong><br>表示请求已接收，继续处理</li>
+<li><strong>2xx：成功</strong><br>表示请求已被成功接收、理解、接受</li>
+<li><strong>3xx：重定向</strong><br>要完成请求必须进行更进一步的操作</li>
+<li><strong>4xx：客户端错误</strong><br>请求有语法错误或请求无法实现</li>
+<li><strong>5xx：服务器端错误</strong><br>服务器未能实现合法的请求</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">常见状态码</span><br><span class="line">200 OK</span><br><span class="line">客户端请求成功</span><br><span class="line">301/302 Moved Permanently（重定向）</span><br><span class="line">请求的URL已移走。Response中应该包含一个Location URL, 说明资源现在所处的位置</span><br><span class="line">304 <span class="keyword">Not</span> Modified（未修改）</span><br><span class="line">客户的缓存资源是最新的， 要客户端使用缓存</span><br><span class="line">400 Bad Request</span><br><span class="line">客户端请求有语法错误，不能被服务器理解</span><br><span class="line">401 Unauthorized</span><br><span class="line">请求未经授权，该状态码和WWW-Authenticate报头域一起使用</span><br><span class="line">403 Forbidden</span><br><span class="line">服务器收到请求，但拒绝提供服务</span><br><span class="line">404 <span class="keyword">Not</span> Found</span><br><span class="line">请求资源不存在</span><br><span class="line">501 Internal<span class="built_in"> Server </span>Error服务器遇到一个错误，使其无法对请求提供服务</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-响应"><a href="#4-响应" class="headerlink" title="4. 响应"></a>4. 响应</h2><h3 id="4-1-组成"><a href="#4-1-组成" class="headerlink" title="4.1 组成"></a>4.1 组成</h3><ul>
+<li>状态行<br>状态行位于相应消息的第一行，有<code>HTTP协议版本号</code>，<code>状态码</code>和<code>状态说明</code>三部分构成响应头</li>
+<li>响应头<br>  服务器传递给客户端用于说明服务器的一些信息，以及将来继续访问该资源时的策略响应体</li>
+<li>响应体<br>   服务端返回给客户端的HTML文本内容，或者其他格式的数据，比如：视频流、图片或者音频数据。</li>
+</ul>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">常用标准响应头字段</span><br><span class="line">Access：服务器支持哪些请求方法（如GET、POST等）。</span><br><span class="line">Content-Encoding：文档的编码（<span class="keyword">Encode</span>）方法。</span><br><span class="line">Content-<span class="keyword">Length</span>：表示内容长度。</span><br><span class="line">Content-Type：表示后面的文档属于什么MIME类型。</span><br><span class="line"><span class="keyword">Date</span>：当前的GMT时间。</span><br><span class="line">Expires：应该在什么时候认为文档已经过期，从而不再缓存它</span><br><span class="line"><span class="keyword">Last</span>-Modified：文档的最后改动时间。</span><br><span class="line">Location：表示客户应当到哪里去提取文档。</span><br><span class="line"><span class="keyword">Refresh</span>：表示浏览器应该在多少时间之后刷新文档，以秒计。</span><br><span class="line">Server：服务器名字。</span><br><span class="line"><span class="keyword">Set</span>-Cookie：设置和页面关联的Cookie。</span><br><span class="line">WWW-<span class="keyword">Authenticate</span>：标识访问请求实体的身份验证方案</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-URL"><a href="#5-URL" class="headerlink" title="5. URL"></a>5. URL</h2><ul>
+<li>URL(统一资源定位符)即在浏览器的地址栏中输入的网址。它为描述Internet上的网页及其他资源地址提供了一种标识方法。==Internet上的每个网页都有一个唯一的名称标识==，该标识被称为URL地址。</li>
+<li>组成<br><code>协议类型</code>、<code>主机名</code>和<code>路径</code>及<code>文件名</code>。</li>
+<li>格式<br>协议://用户名:密码@子域名.域名.顶级域名:端口号/目录/文件名.文件后缀?参数=值#标志</li>
+<li>编码格式<br>只有字母和数字[0-9,a-z,A-Z]、一些特殊符号“$-_.+!*‘(),”[不包括双引号]、以及某些保留字，才可以不经过编码直接用于URL。</li>
+<li>==同源策略==<br>URL格式中，协议，主机，端口三部分相同，才能算是同源。<br>浏览器设置里，默认情况下只有同源的内容才能相互操作。</li>
+</ul>
+<h2 id="6-web应用如何处理用户请求"><a href="#6-web应用如何处理用户请求" class="headerlink" title="6. web应用如何处理用户请求"></a>6. web应用如何处理用户请求</h2><ol>
+<li>客户机与服务器需要建立连接</li>
+<li>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URI）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。</li>
+<li>服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</li>
+<li>客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。</li>
+<li>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端</li>
+</ol>
+<h2 id="7-身份认证"><a href="#7-身份认证" class="headerlink" title="7. 身份认证"></a>7. 身份认证</h2><h3 id="7-1-BASIC-认证"><a href="#7-1-BASIC-认证" class="headerlink" title="7.1 BASIC 认证"></a>7.1 BASIC 认证</h3><ul>
+<li>流程</li>
+</ul>
+<ol>
+<li>当客户端请求的资源需要 BASIC 认证，服务器会随状态码 401 Authorization Required，返回带 WWW-Authenticate 首部字段的响应； </li>
+<li>客户端接收到 401 状态码后，为了通过认证，需要将用户 ID 及密码发给服务器。发送的内容是由用户 ID 和密码构成，两者中间以 : 连接后，再经过 Base64 编码处理；</li>
+<li>接收到包含首部字段 Authorization 请求的服务器，会对认证信息的正确性进行验证。如验证通过，则返回一条包含 Request-URI 资源的响应。</li>
+</ol>
+<ul>
+<li>缺点<br>Base64 编码方式不是一种加密处理，攻击者不需要借助什么就可以对其解码；<br>一般浏览器无法实现 BASIC 认证注销操作。<h3 id="7-2-DIGEST-认证"><a href="#7-2-DIGEST-认证" class="headerlink" title="7.2 DIGEST 认证"></a>7.2 DIGEST 认证</h3></li>
+<li>流程  </li>
+</ul>
+<ol>
+<li>客户端请求需认证的资源时，会向服务器发送认证请求，服务器会随状态码 401，返回带 WWW-Authenticate 首部字段的响应。该字段内包含质问响应方式认证所需的临时质询码（随机数，nonce）。</li>
+<li>客户端接收到 401 状态码后，返回的响应中包含 DIGEST 认证必须的首部字段 Authorization 信息(首部字段 Authorization 内必须包含 username、realm、nonce、uri 和 response 的字段信息。</li>
+<li>服务器接收到包含首部字段 Authorization 请求后，会确认认证信息的正确性。认证通过后则返回包含 Request-URI 资源的响应。</li>
+</ol>
+<ul>
+<li>缺点<br>DIGEST 认证提供了高于BASIC 认证安全等级，不过和后者一样使用上不便捷灵活，同时DIGEST 认证提供防止密码被窃听的保护机制，但不能防止用户伪装，仍达不到多数 Web 网站对安全要求，所以适用范围仍然有限。<h3 id="7-3-SSL-客户端认证"><a href="#7-3-SSL-客户端认证" class="headerlink" title="7.3 SSL 客户端认证"></a>7.3 SSL 客户端认证</h3></li>
+<li>流程  </li>
+</ul>
+<ol>
+<li>服务器在接收到客户端需要认证资源的请求后，会发送 Certificate Request 报文（要求客户端提供客户端证书）；</li>
+<li>用户选择将发送的客户端证书后，客户端会把客户端证书信息以 Client Certificate 报文方式发送给服务器；</li>
+<li>服务器验证客户端证书验证通过后方可领取证书内客户端的公开密钥，然后开始 HTTPS 加密通信。<h3 id="7-4-基于表单认证"><a href="#7-4-基于表单认证" class="headerlink" title="7.4 基于表单认证"></a>7.4 基于表单认证</h3>鉴于HTTP是无状态协议，之前认证成功的用户状态无法通过协议层面保存下来（无法实现状态管理）。即使该用户下一次继续访问，也无法将他与其他用户区分开来。因此基于表单的认证一般会使用Cookie来管理Session会话。来解决HTTP协议的状态管理问题。</li>
+</ol>
+<blockquote>
+<p>由于便利性和安全性问题，HTTP 协议标准提供的 BASIC 认证和 DIGEST 认证几乎不怎么使用，另外 SSL 客户端认证，因为导入及维持费用尚未普及。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/15/算法与数据结构/" rel="next" title="算法与数据结构">
+                <i class="fa fa-chevron-left"></i> 算法与数据结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/16/备份是个好习惯/" rel="prev" title="备份是个好习惯">
+                备份是个好习惯 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://i2.tiimg.com/696747/c33fc3fed989c813.jpg" alt="SunDaSheng">
+            
+              <p class="site-author-name" itemprop="name">SunDaSheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/st12138" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:best_st@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-number">1.1.</span> <span class="nav-text">1. 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-超文本传输协议"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 超文本传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-特点"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-请求"><span class="nav-number">1.2.</span> <span class="nav-text">2. 请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-组成"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-请求方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-21-GET"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.21 GET</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-22-POST"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.22 POST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-23-HEAD"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">2.23 HEAD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-24其他"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">2.24其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-状态码"><span class="nav-number">1.3.</span> <span class="nav-text">3. 状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-响应"><span class="nav-number">1.4.</span> <span class="nav-text">4. 响应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-组成"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 组成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-URL"><span class="nav-number">1.5.</span> <span class="nav-text">5. URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-web应用如何处理用户请求"><span class="nav-number">1.6.</span> <span class="nav-text">6. web应用如何处理用户请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-身份认证"><span class="nav-number">1.7.</span> <span class="nav-text">7. 身份认证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-BASIC-认证"><span class="nav-number">1.7.1.</span> <span class="nav-text">7.1 BASIC 认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-DIGEST-认证"><span class="nav-number">1.7.2.</span> <span class="nav-text">7.2 DIGEST 认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-SSL-客户端认证"><span class="nav-number">1.7.3.</span> <span class="nav-text">7.3 SSL 客户端认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-基于表单认证"><span class="nav-number">1.7.4.</span> <span class="nav-text">7.4 基于表单认证</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SunDaSheng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">8.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
