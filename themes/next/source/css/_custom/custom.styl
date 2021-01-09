@@ -1,0 +1,26 @@
+
+body { 
+    background-image: url(/images/background.jpg);
+    background-attachment: fixed; // 不随屏幕滚动而滚动fixed,scroll,inherit
+    background-repeat: no-repeat; // 如果背景图不够屏幕大小则重复铺，改为no-repeat则表示不重复铺
+    background-size: cover; // contain等比例铺满屏幕 //cover拉伸铺满
+    background-position: bottom;//x,y轴调整
+    +mobile(){
+      //background-position: 0% -20%;https://i.loli.net/2018/12/29/5c270a0523154.jpg
+      //https://i.loli.net/2018/12/29/5c270fc2bfcad.png
+      background-image: url(https://ziyuan.lruihao.cn/images/bg_cell.png);
+      background-size: cover;
+    }
+}
+
+
+// Custom styles.
+
+// 主页文章添加阴影效果
+.post {
+margin-top: 60px;
+margin-bottom: 60px;
+padding: 25px;
+-webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+-moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
