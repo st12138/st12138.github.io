@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/09/testnew-md/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/09/hexo迁移新电脑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SunDaSheng">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/01/09/testnew-md/" itemprop="url">testnew.md</a></h1>
+                <a class="post-title-link" href="/2021/01/09/hexo迁移新电脑/" itemprop="url">hexo迁移新电脑</a></h1>
         
 
         <div class="post-meta">
@@ -290,7 +290,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-09T18:01:18+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-09T20:20:28+08:00">
                 2021-01-09
               </time>
             
@@ -306,12 +306,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-01-09T18:51:14+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-01-09T20:22:08+08:00">
                 2021-01-09
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -334,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1
+                  457
                 </span>
               
 
@@ -373,7 +395,24 @@
       
         
           
-            <p>test。。。。</p>
+            <h1 id="hexo迁移新电脑"><a href="#hexo迁移新电脑" class="headerlink" title="hexo迁移新电脑"></a>hexo迁移新电脑</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>我们初步的解决方案是把我们的文件提交到git上，利用git来管理它，我是这样解决的： 在现有的XXX.github.io项目上创建一个分支来管理</p>
+<ol>
+<li>克隆gitHub上的XXX.github.io项目的文件到本地<br><code>git clone https://github.com/yourname/xxx.github.io.git</code></li>
+<li>删除文件夹里除了.git的其他所有文件</li>
+<li>把hexo项目文件下的所有文件全部复制过来</li>
+<li>里面应该有一个叫.gitignore的文件，如果没有就输入 touch .gitignore，创建一个<br><code>.DS_StoreThumbs.dbdb.json*.lognode_modules/public/.deploy*/</code></li>
+<li>创建一个叫hexo的分支并切换到这个分支上<br><code>git checkout -b hexo</code></li>
+<li>提交复制过来的文件到暂存区<br><code>git add --all</code></li>
+<li>提交<br><code>git commit -m &quot;新建分支资源文件&quot;</code></li>
+<li>推送分支到github<br><code>git push --set-upstream origin hexo</code><br>到这一步我们就基本上搞定了，以后再跟新了博客就直接 git push就可以了，hexo的操作跟以前一样不变。</li>
+<li>今后无论什么时候想要在其他电脑上面用hexo写博客，就直接把创建的分支克隆下来，npm install安装依赖之后就可以用了。<br>克隆分支的操作<code>git clone -b hexo https://github.com/yourname/xxx.github.io.git</code></li>
+<li>因为上面创建的是一个名字叫hexo的分支，所以这里-b后面的是hexo，再把后面的gitHub的地址换成你自己的hexo博客的地址就可以了。</li>
+<li>这样做完了以后，每次写完博客发布之后不要忘了还要git push把源文件推到分支上。</li>
+</ol>
+<p>原文链接<a href="https://blog.csdn.net/wxl1555/article/details/79293159" target="_blank" rel="noopener">https://blog.csdn.net/wxl1555/article/details/79293159</a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>hexo 不支持最新 node14+</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>brew安装nvm</span><br><span class="line">brew install nvm</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>添加路径</span><br><span class="line">cd ~</span><br><span class="line">vim .bash_profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>添加</span><br><span class="line">export NVM_DIR=~/.nvm</span><br><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br><span class="line"></span><br><span class="line">source .bash_profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>安装 nodejs</span><br><span class="line">nvm ls-remote</span><br><span class="line">nvm install 12</span><br></pre></td></tr></table></figure>
+
 
           
         
@@ -2208,7 +2247,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2219,7 +2258,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2286,7 +2325,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.5k</span>
+    <span title="Site words total count">40k</span>
   
 </div>
 
